@@ -1,9 +1,9 @@
 erDiagram
-    %% --- Salesforce Object Relationships & Data Model ---
-    %% This diagram shows key standard fields alongside custom fields for context.
-    %% - It does not include *all* standard fields available on these objects.
-    %% - Field Requiredness (mandatory fields) is NOT indicated here but is important.
-    %% - Lookups: Standard lookups end in 'Id' (e.g., AccountId), Custom lookups end in '__c' (e.g., Account__c).
+%% --- Salesforce Object Relationships & Data Model ---
+%% This diagram shows key standard fields alongside custom fields for context.
+%% - It does not include _all_ standard fields available on these objects.
+%% - Field Requiredness (mandatory fields) is NOT indicated here but is important.
+%% - Lookups: Standard lookups end in 'Id' (e.g., AccountId), Custom lookups end in '**c' (e.g., Account**c).
 
     ACCOUNT ||--o{ CONTACT : "Has (Std Relationship)"
     ACCOUNT ||--o{ Enquiry_Database__c : "Related To (Custom Lookup)"
@@ -115,4 +115,3 @@ erDiagram
         lookup WhatId "(Std) --> Links to Enquiry_Database__c via Legacy_ID__c"
         string Activity_Group__c "(Custom) <- activitytypes.activitygroup (MAPPED Picklist)"
     }
-
