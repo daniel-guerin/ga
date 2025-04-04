@@ -1,10 +1,8 @@
-```mermaid
 erDiagram
     ACCOUNT ||--o{ CONTACT : "Has (Std Relationship)"
     ACCOUNT ||--o{ Enquiry_Database__c : "Related To (Custom Lookup)"
     CONTACT ||--o{ Enquiry_Database__c : "Related To (Custom Lookup)"
-    CONTACT ||--o{ TASK : "Related To (Std WhoId Lookup)"
-    Enquiry_Database__c ||--o{ TASK : "Related To (Std WhatId Lookup)"
+    Enquiry_Database__c ||--o{ CONTACT : "Related To (Custom Lookup)"
 
     ACCOUNT {
         string Id "Salesforce Record ID (Std)"
@@ -91,19 +89,3 @@ erDiagram
         lookup Account__c "--> Links to ACCOUNT via Legacy_Company_ID__c"
         lookup Contact__c "--> Links to CONTACT via Legacy_Contact_ID__c"
     }
-
-    TASK {
-        string Id "Salesforce Record ID (Std)"
-        string OwnerId "Owning User/Queue ID (Std)"
-        datetime CreatedDate "Record Creation Timestamp (Std)"
-        datetime LastModifiedDate "Record Last Update Timestamp (Std)"
-        string Subject "Generated, e.g., 'Enquiry Activity: ' + Enquiry_Name"
-        string Type "<- activitytypes.activitytypename (Mapped Picklist)"
-        string Status "Default or Set by Automation"
-        string Priority "Default or Set by Automation"
-        date ActivityDate "Due Date (Default or Set by Automation)"
-        lookup WhoId "--> Links to CONTACT via Legacy_Contact_ID__c"
-        lookup WhatId "--> Links to Enquiry_Database__c via Legacy_ID__c"
-        string Activity_Group__c "<- activitytypes.activitygroup (Mapped Picklist)"
-    }
-```
