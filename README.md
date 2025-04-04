@@ -7,103 +7,103 @@ erDiagram
     Enquiry_Database__c ||--o{ TASK : "Related To (Std WhatId Lookup)"
 
     ACCOUNT {
-        string Id
-        string OwnerId
-        datetime CreatedDate
-        datetime LastModifiedDate
-        string Name
-        string BillingStreet
-        string BillingCity
-        string BillingState
-        string BillingPostalCode
-        string BillingCountry
-        string Phone
-        string Fax
-        string Industry
-        string Type
-        int NumberOfEmployees
-        string Legacy_Company_ID__c
+        string Id "Salesforce Record ID (Std)"
+        string OwnerId "Owning User/Queue ID (Std)"
+        datetime CreatedDate "Record Creation Timestamp (Std)"
+        datetime LastModifiedDate "Record Last Update Timestamp (Std)"
+        string Name "<- addressall_db.company_name (Std)"
+        string BillingStreet "<- addressall_db.address1 + address2 (Std)"
+        string BillingCity "<- addressall_db.town (Std)"
+        string BillingState "<- addressall_db.county (Std)"
+        string BillingPostalCode "<- addressall_db.postcode (Std)"
+        string BillingCountry "<- addressall_db.country (Std)"
+        string Phone "<- addressall_db.tel (Std)"
+        string Fax "<- addressall_db.fax (Std)"
+        string Industry "<- addressall_db.natureofbusiness (Mapped Picklist) (Std)"
+        string Type "<- addressall_db.typeoforganisation (Mapped Picklist) (Std)"
+        int NumberOfEmployees "<- addressall_db.numberatpractice (Varchar→Number) (Std)"
+        string Legacy_Company_ID__c "(Custom) EXTERNAL ID, UNIQUE - Generated from Name"
     }
 
     CONTACT {
-        string Id
-        string OwnerId
-        datetime CreatedDate
-        datetime LastModifiedDate
-        string Salutation
-        string FirstName
-        string LastName
-        string Email
-        string Phone
-        string MobilePhone
-        string Fax
-        string Title
-        lookup AccountId
-        bool GDPR_Consent__c
-        string Legacy_Contact_ID__c
+        string Id "Salesforce Record ID (Std)"
+        string OwnerId "Owning User/Queue ID (Std)"
+        datetime CreatedDate "Record Creation Timestamp (Std)"
+        datetime LastModifiedDate "Record Last Update Timestamp (Std)"
+        string Salutation "<- addressall_db.title (Mapped Picklist) (Std)"
+        string FirstName "<- addressall_db.forename (Std)"
+        string LastName "<- addressall_db.surname (Std)"
+        string Email "<- addressall_db.email (Std)"
+        string Phone "<- addressall_db.tel (Std)"
+        string MobilePhone "<- addressall_db.mob (Std)"
+        string Fax "<- addressall_db.fax (Std)"
+        string Title "<- addressall_db.jobTitle (Std)"
+        lookup AccountId "--> Links to ACCOUNT via Legacy_Company_ID__c (Std)"
+        bool GDPR_Consent__c "(Custom) <- addressall_db.gdprcheck (String→Checkbox)"
+        string Legacy_Contact_ID__c "(Custom) EXTERNAL ID, UNIQUE - Name+AccountRef"
     }
 
     Enquiry_Database__c {
-        string Id
-        string OwnerId
-        datetime CreatedDate
-        datetime LastModifiedDate
-        string Name
-        string Legacy_ID__c
-        date Entry_Date__c
-        bool Printed__c
-        string QID__c
-        string Contact_Method__c
-        string Lead_Source__c
-        string Enquiry_Category__c
-        string Application__c
-        string Project__c
-        string Tonnes_Involved__c
-        string Taken_By__c
-        bool Paper_File_Created__c
-        bool Publications_Sent__c
-        bool Presentation_Prospect__c
-        bool Awards_Prospect__c
-        bool GA_Followup_Required__c
-        bool GA_Followup_Completed__c
-        bool GP_Followup_Required__c
-        bool GP_Followup_Completed__c
-        string CPD_ID__c
-        string CPD_Details__c
-        bool Presentation_Completed__c
-        bool Meeting_Held__c
-        bool Technical_Advice__c
-        bool Action_Required__c
-        string Projects__c
-        string Mailing_List_ID__c
-        string Region__c
-        string Reader_Survey__c
-        string Customer_ID__c
-        string Where_Contact_Made__c
-        string Additional_Contact_Info__c
-        string System_ID__c
-        string Publications_To_Send__c
-        bool Award_Entry__c
-        bool Award_Win__c
-        string Award_Year__c
-        string Award_Category__c
-        date Last_Updated_Date__c
-        lookup Account__c
-        lookup Contact__c
+        string Id "Salesforce Record ID (System - Custom Obj)"
+        string OwnerId "Owning User/Queue ID (System - Custom Obj)"
+        datetime CreatedDate "Record Creation Timestamp (System - Custom Obj)"
+        datetime LastModifiedDate "Record Last Update Timestamp (System - Custom Obj)"
+        string Name "(AutoNumber Recommended, e.g., ENQ-{0000}, Exact formula TBD)"
+        string Legacy_ID__c "<- addressall_db.input_id (EXTERNAL ID)"
+        date Entry_Date__c "<- addressall_db.entry_date"
+        bool Printed__c "<- addressall_db.printed (String→Checkbox)"
+        string QID__c "<- addressall_db.qid"
+        string Contact_Method__c "<- addressall_db.contactby (Mapped Picklist)"
+        string Lead_Source__c "<- addressall_db.lead (Mapped Picklist)"
+        string Enquiry_Category__c "<- addressall_db.enquirycategory (Mapped Picklist)"
+        string Application__c "<- addressall_db.application (Mapped Picklist)"
+        string Project__c "<- addressall_db.project"
+        string Tonnes_Involved__c "<- addressall_db.tonnesinvolve"
+        string Taken_By__c "<- addressall_db.takenby"
+        bool Paper_File_Created__c "<- addressall_db.paperfilecreated (String→Checkbox)"
+        bool Publications_Sent__c "<- addressall_db.publications (String→Checkbox)"
+        bool Presentation_Prospect__c "<- addressall_db.presentationprospect (String→Checkbox)"
+        bool Awards_Prospect__c "<- addressall_db.awardsprospect (String→Checkbox)"
+        bool GA_Followup_Required__c "<- addressall_db.GAfollowup (String→Checkbox)"
+        bool GA_Followup_Completed__c "<- addressall_db.GAfollowupcompleated (String→Checkbox)"
+        bool GP_Followup_Required__c "<- addressall_db.GPfollowup (String→Checkbox)"
+        bool GP_Followup_Completed__c "<- addressall_db.GPfollowupcompleated (String→Checkbox)"
+        string CPD_ID__c "<- addressall_db.cpdid"
+        string CPD_Details__c "<- addressall_db.cpd_details (LONGTEXT)"
+        bool Presentation_Completed__c "<- addressall_db.presentationcompleted (String→Checkbox)"
+        bool Meeting_Held__c "<- addressall_db.meeting (String→Checkbox)"
+        bool Technical_Advice__c "<- addressall_db.techadvice (String→Checkbox)"
+        bool Action_Required__c "<- addressall_db.actionreqired (String→Checkbox)"
+        string Projects__c "<- addressall_db.projects (LONGTEXT)"
+        string Mailing_List_ID__c "<- addressall_db.mlid"
+        string Region__c "<- addressall_db.region (Mapped Picklist)"
+        string Reader_Survey__c "<- addressall_db.ReaderSurvey"
+        string Customer_ID__c "<- addressall_db.cid"
+        string Where_Contact_Made__c "<- addressall_db.wherecontactmade (LONGTEXT)"
+        string Additional_Contact_Info__c "<- addressall_db.contact_details (LONGTEXT)"
+        string System_ID__c "<- addressall_db.sid"
+        string Publications_To_Send__c "<- addressall_db.publicationstosend (LONGTEXT)"
+        bool Award_Entry__c "<- addressall_db.awardentry (String→Checkbox)"
+        bool Award_Win__c "<- addressall_db.awardwin (String→Checkbox)"
+        string Award_Year__c "<- addressall_db.awardyr"
+        string Award_Category__c "<- addressall_db.awardcat"
+        date Last_Updated_Date__c "<- addressall_db.dateUpdated"
+        lookup Account__c "--> Links to ACCOUNT via Legacy_Company_ID__c"
+        lookup Contact__c "--> Links to CONTACT via Legacy_Contact_ID__c"
     }
 
     TASK {
-        string Id
-        string OwnerId
-        datetime CreatedDate
-        datetime LastModifiedDate
-        string Subject
-        string Type
-        string Status
-        string Priority
-        date ActivityDate
-        lookup WhoId
-        lookup WhatId
-        string Activity_Group__c
+        string Id "Salesforce Record ID (Std)"
+        string OwnerId "Owning User/Queue ID (Std)"
+        datetime CreatedDate "Record Creation Timestamp (Std)"
+        datetime LastModifiedDate "Record Last Update Timestamp (Std)"
+        string Subject "Generated, e.g., 'Enquiry Activity: ' + Enquiry_Name"
+        string Type "<- activitytypes.activitytypename (Mapped Picklist)"
+        string Status "Default or Set by Automation"
+        string Priority "Default or Set by Automation"
+        date ActivityDate "Due Date (Default or Set by Automation)"
+        lookup WhoId "--> Links to CONTACT via Legacy_Contact_ID__c"
+        lookup WhatId "--> Links to Enquiry_Database__c via Legacy_ID__c"
+        string Activity_Group__c "<- activitytypes.activitygroup (Mapped Picklist)"
     }
 ```
