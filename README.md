@@ -1,4 +1,3 @@
-```mermaid
 erDiagram
     ACCOUNT ||--o{ CONTACT : "Has (Std Relationship)"
     ACCOUNT ||--o{ Enquiry_Database__c : "Related To (Custom Lookup)"
@@ -19,8 +18,8 @@ erDiagram
         string Phone "<- addressall_db.tel (Std)"
         string Fax "<- addressall_db.fax (Std)"
         string Industry "<- addressall_db.natureofbusiness (Mapped Picklist) (Std)"
-        string Type "<- addressall_db.typeoforganisation (Mapped Picklist) (Std)"
-        int NumberOfEmployees "<- addressall_db.numberatpractice (Varchar→Number) (Std)"
+        string Type "<- addressall_db.typeoforganisation (Std field, treat as Text due to source data)"
+        string NumberOfEmployees "<- addressall_db.numberatpractice (Varchar→Text) (Std)"
         string Legacy_Company_ID__c "(Custom) EXTERNAL ID, UNIQUE - Generated from Name"
     }
 
@@ -90,4 +89,3 @@ erDiagram
         lookup Account__c "--> Links to ACCOUNT via Legacy_Company_ID__c"
         lookup Contact__c "--> Links to CONTACT via Legacy_Contact_ID__c"
     }
-```
