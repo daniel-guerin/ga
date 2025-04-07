@@ -1,3 +1,4 @@
+```mermaid
 erDiagram
     ACCOUNT ||--o{ CONTACT : "Has (Std Relationship)"
     ACCOUNT ||--o{ Enquiry_Database__c : "Related To (Custom Lookup)"
@@ -89,3 +90,4 @@ erDiagram
         lookup Account__c "--> Links to ACCOUNT via Legacy_Company_ID__c"
         lookup Contact__c "--> Links to CONTACT via Legacy_Contact_ID__c"
     }
+```
