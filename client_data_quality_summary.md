@@ -168,7 +168,23 @@ _ **Relationship Issues:** It becomes difficult to reliably link related informa
   - Record B (`input_id: 29853`): ` Fischer Fixings`, `Hithercroft Road`, Oxfordshire, `OX10 9AT`, Contact: David McLaren, Tel: ...920
   - _Issue:_ Likely the same company location (minor address/name variations), but entered as separate records for different contacts. These should be merged into a single Account record in Salesforce, with both individuals linked as Contacts.
 
-**Required Action:** These examples highlight why simple checks fail. An automated, intelligent process is needed during migration. This process must compare records across multiple fields (name, address parts, postcode, phone), effectively handle variations and missing data, and confidently identify and merge duplicates. This is the only way to ensure each real-world company exists just once in Salesforce, providing a true single source of truth.
+### Estimated Effort for Cleansing & Deduplication
+
+Addressing the data consistency issues (Section 2) and implementing a robust deduplication process (Section 3) requires dedicated effort. Based on our analysis and the chosen strategy (using the `recordlinkage` library with a refined rule-based approach for Accounts), we estimate the combined workload for these critical data preparation tasks to be in the range of **19 - 39 hours** (approximately 2.5 - 5 working days).
+
+**This estimate includes:**
+
+- Analysis and definition of rules for standardizing inconsistent fields (like titles, postcodes, checkbox values).
+- Development and testing of scripts to perform this data cleansing.
+- Implementation of the rule-based Account deduplication process using `recordlinkage`.
+- Iterative tuning and refinement of the deduplication rules based on data analysis.
+- Integration of cleansing and deduplication steps into the migration workflow.
+
+**Exclusions:**
+
+- This estimate focuses on the planned rule-based deduplication. Should this approach prove insufficient after tuning, implementing an advanced Machine Learning approach (which would require a separate data labeling phase) would necessitate **additional time** beyond this initial estimate.
+
+Investing this time upfront is crucial for ensuring the data migrated to Salesforce is clean, reliable, and provides a solid foundation for user adoption and effective system use.
 
 ---
 
