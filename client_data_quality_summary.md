@@ -183,7 +183,7 @@ To ensure a successful migration and a reliable Salesforce system, we recommend 
     - Addressing other identified inconsistencies.
     - _Note:_ This cleansing effort should also review the non-empty values within the sparse fields being kept (see point 2).
 2.  **Targeted Field Migration:**
-    - **Exclude** columns that are over 90% empty _and_ provide little business value (e.g., `awardwin`, `awardyr`, `awardcat`, `typeoforganisation`, `projects` [distinct from `project`], `awardentry`, `jobTitle`, `cid`, `contact_details`, `ReaderSurvey`, `wherecontactmade`). This simplifies the migration and avoids cluttering Salesforce.
+    - **Exclude** columns that are over 90% empty _and_ provide little business value (e.g., `awardwin`, `awardyr`, `awardcat`, `typeoforganisation`, `projects` [distinct from `project`], `awardentry`, `jobTitle`, `cid`, `contact_details`, `ReaderSurvey`, `wherecontactmade`, `sid`, `mlid`, `qid`). This simplifies the migration and avoids cluttering Salesforce.
     - **Include** specific fields despite >90% emptiness because their non-empty records contain valuable business context. These fields are: `project`, `cpd_details`, `tonnesinvolve`, `region`, `numberatpractice`, `cpdid` (critical for identifying CPD activity), `mob`, and `country`. Ensure these are part of the migration scope.
 3.  **Implement Smart Deduplication:** Employ an automated deduplication process during the migration itself. This process will intelligently compare and merge duplicate Account (and potentially Contact) records based on multiple criteria, ensuring data accuracy.
 
