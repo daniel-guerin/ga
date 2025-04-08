@@ -133,17 +133,32 @@ _ **Relationship Issues:** It becomes difficult to reliably link related informa
   - Record B (`input_id: 55960`): `3 E Consulting Engineers`, `4 Calder Close`, Wakefield, `WF4 3BA`
   - _Issue:_ Same company name and postcode, but a typo in the address line (`Colder` vs `Calder`). Again, likely the same entity.
 
-- **Example 3: Missing Information**
+- **Example 3: Company Name Variations & Multiple Locations**
+
+  - Record A (`input_id: 4456`): `% BDP`, PO Box 4WD, LONDON, `W1A 4WD`
+  - Record B (`input_id: 6229`): `B D P`, PO Box 85, Quay Street [Manchester], `M60 3JA`
+  - Record C (`input_id: 14351`): `BDP`, 2 Bruce St, Belfast, `BT2 7JD`
+  - Record D (`input_id: 46803`): `BDP`, 85-89 Colmore Row, Birmingham, `B3 2BB`
+  - _Issue:_ Is this the same company with inconsistent naming (`% BDP`, `B D P`, `BDP`) across multiple branches, or different entities? Simple matching fails here; requires intelligent comparison and potentially manual review to confirm relationships.
+
+- **Example 4: Missing Information**
 
   - Record A (`input_id: 62778`): `Acme Architects`, (No Address1), London, (No Postcode)
   - Record B (`input_id: 62788`): `Acme Architects`, `76 Tabernacle Street`, London, `EC2 A4EA`
-  - _Issue:_ Same company name and town, but one record lacks the specific address and postcode. Are these the same London office, or different branches? Needs careful handling.
+  - _Issue:_ Same company name and town, but one record lacks the specific address and postcode. Are these the same London office, or different branches? Needs careful handling during deduplication.
 
-- **Example 4: Multiple Incomplete Records**
+- **Example 5: Multiple Incomplete Records**
+
   - Record A (`input_id: 13609`): `Adey Steel`, `Flacon Industrial Estate`, Loughborough, `LE11 1HL`
   - Record B (`input_id: 61259`): `Adey Steel`, (No Address1), Loughborough, (No Postcode)
   - Record C (`input_id: 15542`): `Adey Steel`, `Falcon Industrial Estate`, Loughborough, `LE11 1HL` (Note 'Falcon' vs 'Flacon')
   - _Issue:_ Multiple entries for likely the same company, with missing information and slight variations making simple matching unreliable.
+
+- **Example 6: Different Contacts at Same Location**
+
+  - Record A (`input_id: 14956`): ` Fischer Fixings`, `Hidhercroft Road`, Oxfordshire, `OX10 9AT`, Contact: Mirka Valovic, Tel: ...923
+  - Record B (`input_id: 29853`): ` Fischer Fixings`, `Hithercroft Road`, Oxfordshire, `OX10 9AT`, Contact: David McLaren, Tel: ...920
+  - _Issue:_ Likely the same company location (minor address/name variations), but entered as separate records for different contacts. These should be merged into a single Account record in Salesforce, with both individuals linked as Contacts.
 
 **Required Action:** These examples highlight why simple checks fail. An automated, intelligent process is needed during migration. This process must compare records across multiple fields (name, address parts, postcode, phone), effectively handle variations and missing data, and confidently identify and merge duplicates. This is the only way to ensure each real-world company exists just once in Salesforce, providing a true single source of truth.
 
