@@ -17,73 +17,68 @@
 **Findings:** Many columns in the source data are largely empty, rendering them unusable. The table below shows the percentage of missing or empty values for each column, sorted from most empty to least.
 
 ```markdown
-| Column             | Null/Empty Count | Percentage |
-| ------------------ | ---------------- | ---------- |
-| awardwin           | 56008            | 100.00%    |
-| awardyr            | 56008            | 100.00%    |
-| awardcat           | 56008            | 100.00%    |
-| typeoforganisation | 56007            | 100.00%    |
-| projects           | 56007            | 100.00%    |
-| awardentry         | 56007            | 100.00%    |
-| jobTitle           | 56006            | 100.00%    |
-| cid                | 56006            | 100.00%    |
-| contact_details    | 56003            | 99.99%     |
-| ReaderSurvey       | 56002            | 99.99%     |
-| wherecontactmade   | 55996            | 99.98%     |
-| project            | 55942            | 99.88%     |
-| cpd_details        | 55816            | 99.66%     |
-| tonnesinvolve      | 55771            | 99.58%     |
-| region             | 55657            | 99.37%     |
-| numberatpractice   | 55413            | 98.94%     |
-| cpdid              | 54984            | 98.17%     |
-| mob                | 51441            | 91.85%     |
-| country            | 50429            | 90.04%     |
-
-# --- Columns below 90% --- (abbreviated for brevity)
-
-| mlid | 48568 | 86.72% |
-| fax | 43592 | 77.83% |
-| application | 42550 | 75.97% |
-| email | 38090 | 68.01% |
-| county | 37832 | 67.55% |
-| publicationstosend | 32534 | 58.09% |
-| sid | 25856 | 46.16% |
-| tel | 25615 | 45.73% |
-| address2 | 20451 | 36.51% |
-| town | 19297 | 34.45% |
-| lead | 18608 | 33.22% |
-| dateUpdated | 18007 | 32.15% |
-| postcode | 17184 | 30.68% |
-| address1 | 15154 | 27.06% |
-| enquiry_details | 14963 | 26.72% |
-| qid | 14338 | 25.60% |
-| actionreqired | 13256 | 23.67% |
-| enquirycategory | 12654 | 22.59% |
-| takenby | 8219 | 14.67% |
-| contactby | 7756 | 13.85% |
-| natureofbusiness | 6392 | 11.41% |
-| publications | 5708 | 10.19% |
-| printed | 5707 | 10.19% |
-| paperfilecreated | 5707 | 10.19% |
-| presentationprospect | 5707 | 10.19% |
-| awardsprospect | 5707 | 10.19% |
-| GAfollowup | 5707 | 10.19% |
-| GAfollowupcompleated | 5707 | 10.19% |
-| GPfollowup | 5707 | 10.19% |
-| GPfollowupcompleated | 5707 | 10.19% |
-| presentationcompleted | 5707 | 10.19% |
-| meeting | 5707 | 10.19% |
-| techadvice | 5707 | 10.19% |
-| forename | 2013 | 3.59% |
-| company_name | 1951 | 3.48% |
-| surname | 781 | 1.39% |
-| title | 648 | 1.16% |
-| entry_date | 207 | 0.37% |
-| gdprcheck | 0 | 0.00% |
-| input_id | 0 | 0.00% |
+| Column                | Null/Empty Count | Percentage | Non-Empty Count |
+| --------------------- | ---------------- | ---------- | --------------- |
+| awardwin              | 56008            | 100.00%    | 0               |
+| awardyr               | 56008            | 100.00%    | 0               |
+| awardcat              | 56008            | 100.00%    | 0               |
+| typeoforganisation    | 56007            | 100.00%    | 1               |
+| projects              | 56007            | 100.00%    | 1               |
+| awardentry            | 56007            | 100.00%    | 1               |
+| jobTitle              | 56006            | 100.00%    | 2               |
+| cid                   | 56006            | 100.00%    | 2               |
+| contact_details       | 56003            | 99.99%     | 5               |
+| ReaderSurvey          | 56002            | 99.99%     | 6               |
+| wherecontactmade      | 55996            | 99.98%     | 12              |
+| project               | 55942            | 99.88%     | 66              |
+| cpd_details           | 55816            | 99.66%     | 192             |
+| tonnesinvolve         | 55771            | 99.58%     | 237             |
+| region                | 55657            | 99.37%     | 351             |
+| numberatpractice      | 55413            | 98.94%     | 595             |
+| cpdid                 | 54984            | 98.17%     | 1024            |
+| mob                   | 51441            | 91.85%     | 4567            |
+| country               | 50429            | 90.04%     | 5579            |
+| mlid                  | 48568            | 86.72%     | 7440            |
+| fax                   | 43592            | 77.83%     | 12416           |
+| application           | 42550            | 75.97%     | 13458           |
+| email                 | 38090            | 68.01%     | 17918           |
+| county                | 37832            | 67.55%     | 18176           |
+| publicationstosend    | 32534            | 58.09%     | 23474           |
+| sid                   | 25856            | 46.16%     | 30152           |
+| tel                   | 25615            | 45.73%     | 30393           |
+| address2              | 20451            | 36.51%     | 35557           |
+| town                  | 19297            | 34.45%     | 36711           |
+| lead                  | 18608            | 33.22%     | 37400           |
+| dateUpdated           | 18007            | 32.15%     | 37993           |
+| postcode              | 17184            | 30.68%     | 38824           |
+| address1              | 15154            | 27.06%     | 40854           |
+| enquiry_details       | 14963            | 26.72%     | 41045           |
+| qid                   | 14338            | 25.60%     | 41670           |
+| actionreqired         | 13256            | 23.67%     | 42752           |
+| enquirycategory       | 12654            | 22.59%     | 43354           |
+| takenby               | 8219             | 14.67%     | 47789           |
+| contactby             | 7756             | 13.85%     | 48252           |
+| natureofbusiness      | 6392             | 11.41%     | 49616           |
+| publications          | 5708             | 10.19%     | 50300           |
+| printed               | 5707             | 10.19%     | 50301           |
+| paperfilecreated      | 5707             | 10.19%     | 50301           |
+| presentationprospect  | 5707             | 10.19%     | 50301           |
+| awardsprospect        | 5707             | 10.19%     | 50301           |
+| GAfollowup            | 5707             | 10.19%     | 50301           |
+| GAfollowupcompleated  | 5707             | 10.19%     | 50301           |
+| GPfollowup            | 5707             | 10.19%     | 50301           |
+| GPfollowupcompleated  | 5707             | 10.19%     | 50301           |
+| presentationcompleted | 5707             | 10.19%     | 50301           |
+| meeting               | 5707             | 10.19%     | 50301           |
+| techadvice            | 5707             | 10.19%     | 50301           |
+| forename              | 2013             | 3.59%      | 53995           |
+| company_name          | 1951             | 3.48%      | 54057           |
+| surname               | 781              | 1.39%      | 55227           |
+| title                 | 648              | 1.16%      | 55360           |
+| entry_date            | 207              | 0.37%      | 55801           |
+| gdprcheck             | 0                | 0.00%      | 56008           |
+| input_id              | 0                | 0.00%      | 56008           |
 ```
-
-**Recommendation:** We strongly recommend **not migrating** columns that are over 90% empty. These provide little value and unnecessarily complicate the migration and clutter Salesforce. This includes fields like `awardwin`, `typeoforganisation`, `jobTitle`, `mob`, `country`, and others listed above the 90% mark.
 
 ---
 
@@ -173,7 +168,10 @@ To ensure a successful migration and a reliable Salesforce system, we recommend 
     - Correcting invalid postcode formats.
     - Converting boolean/checkbox fields to a consistent `True`/`False` format.
     - Addressing other identified inconsistencies.
-2.  **Simplify by Removing Empty Fields:** Agree on and exclude columns with over 90% missing data from the migration. This simplifies the process and avoids cluttering Salesforce with unusable fields.
+    - _Note:_ This cleansing effort should also review the non-empty values within the sparse fields being kept (see point 2).
+2.  **Targeted Field Migration:**
+    - **Exclude** columns that are over 90% empty _and_ provide little business value (e.g., `awardwin`, `awardyr`, `awardcat`, `typeoforganisation`, `projects` [distinct from `project`], `awardentry`, `jobTitle`, `cid`, `contact_details`, `ReaderSurvey`, `wherecontactmade`). This simplifies the migration and avoids cluttering Salesforce.
+    - **Include** specific fields despite >90% emptiness because their non-empty records contain valuable business context. These fields are: `project`, `cpd_details`, `tonnesinvolve`, `region`, `numberatpractice`, `cpdid` (critical for identifying CPD activity), `mob`, and `country`. Ensure these are part of the migration scope.
 3.  **Implement Smart Deduplication:** Employ an automated deduplication process during the migration itself. This process will intelligently compare and merge duplicate Account (and potentially Contact) records based on multiple criteria, ensuring data accuracy.
 
 This preparatory work is critical for data integrity and successful user adoption in Salesforce. Investing this effort now will result in a much cleaner, more reliable, and ultimately more valuable system for your business long-term.
