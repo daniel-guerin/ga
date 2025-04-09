@@ -191,7 +191,7 @@ With a structured approach focusing first on deduplication and critical data cle
 Achieving a validated, repeatable pipeline for cleaning, deduplicating (Accounts then Contacts), and preparing all 56,000 records from `ganew2.addressall_db` for a high-precision Salesforce migration is a significant task. Considering the identified data quality issues (completeness, formatting, high duplication) and the necessary iterative steps:
 
 1.  **Iterative Cleaning & Standardization:** Applying and refining rules across numerous fields.
-2.  **Account Deduplication:** Tuning and validating `recordlinkage` (rule-based or ML) to achieve high precision is crucial and requires iteration against ground truth.
+2.  **Account Deduplication:** Tuning and validating `recordlinkage` (rule-based and ML) to achieve high precision is crucial and requires iteration against ground truth.
 3.  **Contact Deduplication:** Designing and implementing a robust strategy (likely fuzzy matching + phone/email within confirmed Account groups), heavily dependent on accurate Account deduplication results.
 4.  **Pipeline Integration & Testing:** Building the end-to-end process, generating IDs, mapping fields, and validating outputs thoroughly.
 
